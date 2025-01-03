@@ -6,7 +6,7 @@
 /*   By: cpoulain <cpoulain@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 15:26:58 by cpoulain          #+#    #+#             */
-/*   Updated: 2025/01/02 17:33:43 by cpoulain         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:43:00 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,24 @@
 # define OP_RRB	0xA
 # define OP_RRR	0xB
 
+// Forward declaration of t_ps_context
+
+typedef struct s_ps_context	t_ps_context;
+
+// Types
+
+typedef void				(*t_operator)(t_ps_context *);
+
 // Structures
 
 typedef struct s_ps_context
 {
-	t_list	*a;
-	t_list	*b;
-	int		*values;
-	size_t	count;
+	t_list		*a;
+	t_list		*b;
+	int			*values;
+	size_t		count;
+	t_operator	operations[12];
 }	t_ps_context;
-
-// Types
-
-typedef void	(*t_operator)(t_ps_context *);
 
 // Functions prototypes
 

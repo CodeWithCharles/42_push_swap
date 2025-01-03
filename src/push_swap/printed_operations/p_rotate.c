@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_push.c                                           :+:      :+:    :+:   */
+/*   p_rotate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 13:48:28 by cpoulain          #+#    #+#             */
-/*   Updated: 2025/01/03 13:52:23 by cpoulain         ###   ########.fr       */
+/*   Created: 2025/01/03 13:54:08 by cpoulain          #+#    #+#             */
+/*   Updated: 2025/01/03 13:55:20 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,26 @@
 
 // Function implementations
 
-void	p_pa(
+void	p_ra(
 	t_ps_context *context
 )
 {
-	ft_putstr_fd("pa\n", 1);
-	pa(context);
+	ft_putstr_fd("ra\n", 1);
+	ra(context);
 }
 
-void	p_pb(
+void	p_rb(
 	t_ps_context *context
 )
 {
-	ft_putstr_fd("pb\n", 1);
-	pb(context);
+	ft_putstr_fd("rb\n", 1);
+	rb(context);
+}
+
+void	p_rr(
+	t_ps_context *context
+)
+{
+	ft_putstr_fd("rr\n", 1);
+	rr(context);
 }

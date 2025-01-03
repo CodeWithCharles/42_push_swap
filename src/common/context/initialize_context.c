@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize.c                                       :+:      :+:    :+:   */
+/*   initialize_context.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:02:04 by cpoulain          #+#    #+#             */
-/*   Updated: 2025/01/02 17:32:09 by cpoulain         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:43:39 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static bool			_exists(
 						);
 
 static t_ps_context	*_normalize(
-						t_ps_context *context,
+						t_ps_context *context
 						);
 
 // Function implementation
@@ -118,7 +118,7 @@ static bool	_exists(
 	itr = context->a;
 	while (itr)
 	{
-		if (*(int *)itr->context == value)
+		if (*(int *)itr->content == value)
 			return (true);
 		itr = itr->next;
 	}

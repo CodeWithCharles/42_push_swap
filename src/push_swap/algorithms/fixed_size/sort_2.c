@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_push.c                                           :+:      :+:    :+:   */
+/*   sort_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpoulain <cpoulain@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 13:48:28 by cpoulain          #+#    #+#             */
-/*   Updated: 2025/01/03 13:52:23 by cpoulain         ###   ########.fr       */
+/*   Created: 2025/01/03 14:09:10 by cpoulain          #+#    #+#             */
+/*   Updated: 2025/01/03 14:10:31 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,15 @@
 
 // Function implementations
 
-void	p_pa(
+void	sort_for_2(
 	t_ps_context *context
 )
 {
-	ft_putstr_fd("pa\n", 1);
-	pa(context);
-}
+	int	first;
+	int	second;
 
-void	p_pb(
-	t_ps_context *context
-)
-{
-	ft_putstr_fd("pb\n", 1);
-	pb(context);
+	first = *(int *)context->a->content;
+	second = *(int *)context->a->next->content;
+	if (first > second)
+		p_sa(context);
 }

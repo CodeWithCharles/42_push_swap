@@ -6,7 +6,7 @@
 #    By: cpoulain <cpoulain@student.42lehavre.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 16:33:26 by cpoulain          #+#    #+#              #
-#    Updated: 2025/01/02 15:08:29 by cpoulain         ###   ########.fr        #
+#    Updated: 2025/01/03 15:50:50 by cpoulain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ ECHO			=	/usr/bin/echo
 
 # Includes
 
-include			Files.mk
+include			Files_checker.mk
+include			Files_common.mk
+include			Files_push_swap.mk
 
 # Directories
 
@@ -49,13 +51,14 @@ LIBFT_GIT		:=	https://github.com/CodeWithCharles/42_libft_full.git
 # Targets
 
 PS_TARGET		:=	$(BIN_DIR)/$(PUSH_SWAP)
+CK_TARGET		:=	$(BIN_DIR)/$(CHECKER)
 TDPTY_LIBFT_H	:=	$(INC_DIR)/$(LIBFT_INC_H)
 
 # Compiler
 
 CC				:=	cc
-CFLAGS			:=	-Wall -Wextra -Werror -g
-LFLAGS			:=	-L$(LIBFT_PATH) -l$(LIBFT_TARGET)
+CFLAGS			:=	-I$(INC_DIR) -Wall -Wextra -Werror -g
+LFLAGS			:=	-L$(LIBFT_PATH) -l:libftfull.a
 
 # Objs
 
@@ -86,6 +89,8 @@ TERM_CLEAR_LINE	:=	\033[2K\r
 # Phony rules
 
 all: $(PS_TARGET)
+
+bonus: $(CK_TARGET)
 
 clean:
 	@if [ -e $(OBJ_DIR) ]; then \
@@ -125,6 +130,18 @@ norminette:
 
 # Binary
 
+$(PS_TARGET): $(LIBFT_TARGET) $(CM_OBJS) $(PS_OBJS)
+	@mkdir -p $(@D)
+	$(CC) -o $@ $(CM_OBJS) $(PS_OBJS) $(CFLAGS) $(LFLAGS)
+
+$(CK_TARGET): $(LIBFT_TARGET) $(CM_OBJS) $(CK_OBJS)
+	@mkdir -p $(@D)
+	$(CC) -o $@ $(CM_OBJS) $(CK_OBJS) $(CFLAGS) $(LFLAGS)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(@D)
+	$(CC) -c $< -o $@ $(CFLAGS)
+
 # Third party compilation
 
 $(LIBFT_TARGET):
@@ -138,4 +155,4 @@ $(LIBFT_TARGET):
 	@cp -u $(LIBFT_PATH)/$(LIBFT_INC_H) $(INC_DIR)/
 	@printf "$(TERM_CLEAR_LINE)$(TERM_GREEN)Done copying archive $(TERM_BLUE)\"%s\"$(TERM_GREEN) !\n$(TERM_RESET)" $@
 
-.PHONY: all clean fclean re norminette cleanlibs fcleanlibs
+.PHONY: all bonus clean fclean re norminette cleanlibs fcleanlibs

@@ -6,7 +6,7 @@
 /*   By: cpoulain <cpoulain@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 15:51:52 by cpoulain          #+#    #+#             */
-/*   Updated: 2025/01/02 17:32:40 by cpoulain         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:44:25 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ static void	_swap(
 	t_list	*second;
 	t_list	*rest;
 
-	if (*stack == NULL)
+	if (*list == NULL)
 		return ;
-	if ((*stack)->next == NULL)
+	if ((*list)->next == NULL)
 		return ;
-	first = *stack;
+	first = *list;
 	second = first->next;
 	rest = second->next;
 	first->next = rest;
 	second->next = first;
-	*stack = second;
+	*list = second;
 }
