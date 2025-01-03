@@ -6,7 +6,7 @@
 /*   By: cpoulain <cpoulain@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:27:26 by cpoulain          #+#    #+#             */
-/*   Updated: 2025/01/03 15:31:23 by cpoulain         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:41:53 by cpoulain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int	main(
 {
 	t_ps_context	*context;
 
-	(void)argc;
-	context = initialize_context((const char **)(argv + 1));
+	argv++;
+	if (argc == 2)
+		argv = ft_split(argv[0], ' ');
+	context = initialize_context((const char **)(argv));
 	if (context == NULL)
 		return (ft_putstr_fd("Error\n", STDERR_FILENO), EXIT_FAILURE);
 	initialize_operations(context);
